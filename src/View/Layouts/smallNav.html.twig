@@ -1,0 +1,26 @@
+<nav class="small-nav navbar navbar-light">
+    <ul class="container-fluid d-flex justify-content-evenly sm-nav">
+        <li><a class="nav-a" href="/products">Tous nos produits</a></li>
+        {% for category in categories %}
+        <li><a class="nav-a" href="/products/category?cat_id={{ category.id }}">{{ category.type }}</a>
+            <form method="POST">
+                <input type="text" class="d-none" name="category" value="{{ category.id }}">
+            </form>
+        </li>
+        {% endfor %}
+        {% if otherCategories|length > 0 %}
+        <span class="btn-group mt-2">
+            <button type="button" class="btn btn-cat dropdown-toggle sm-nav nav-a" data-bs-toggle="dropdown">
+                voir plus
+            </button>
+            <ul class="dropdown-menu bg-account" aria-expanded="false">
+                {% for otherCategory in otherCategories %}
+                <li>
+                    <a class="dropdown-item" href="/products/category?cat_id={{ otherCategory.id }}">{{ otherCategory.type }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </span>
+        {% endif %}
+    </ul>
+</nav>

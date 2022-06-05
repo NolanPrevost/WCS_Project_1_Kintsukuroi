@@ -1,0 +1,72 @@
+{% for error in errors %}
+<div class="alert-button-info">
+	<div class="alert alert-warning alert-dismissible fade show " style="width: 480px;" role="alert">
+{{error}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+	</div>
+</div>
+{% endfor %}
+
+<div class="form-user">
+	<form method="post"><b>
+			<input type="hidden" value="{{ user.id }}" name="id">
+			<div class="form-row">
+				<div class="col-6">
+					<p class="marge-right-form-user">
+						<label for="lastname">Nom </label>
+						<input type="text" value="{{ user.lastname }}" class="form-control" name="lastname"
+						placeholder="Entrez votre nom" id="lastname">
+					</p>
+				</div>
+				<div class="col-6">
+					<p class="marge-left-form-user">
+						<label for="firstname">Prénom </label>
+						<input type="text" value="{{ user.firstname }}" class="form-control" name="firstname"
+						placeholder="Entrez votre prénom" id="firstname">
+					</p>
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="form-group col-6">
+					<p class="marge-right-form-user">
+						<label for="email">Email </label>
+						<input type="text" value="{{ user.email }}" class="form-control" name="email"
+							placeholder="Entrez votre email" id="email">
+					</p>
+				</div>
+				<div class="form-group col-6">
+					<p class="marge-left-form-user">
+						<label for="phone">Téléphone :</label>
+						<input type="text" value="{{ user.phone }}" class="form-control" name="phone"
+							placeholder="Entrez votre numéro de téléphone" id="phone">
+					</p>
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="form-group col-12">
+					<label for="address">Adresse </label>
+					<input type="text" value="{{ user.address }}" class="form-control" name="address"
+						placeholder="Entrez votre adresse" id="address">
+				</div>
+			</div><br>
+			<div class="form-row">
+				<div class="col-6">
+					<p class="marge-right-form-user">
+						<label for="password">Mot de passe </label>
+						<input type="password" value="{{ user.password }}" class="form-control" name="password"
+							placeholder="Entrez votre mot de passe" id="password">
+					</p>
+				</div>
+				<div class="col-6">
+					<p class="marge-left-form-user">
+						<label for="password">Confirmer</label>
+						<input type="password" value="" class="form-control" name="passwordConf"
+							placeholder="Confirmez votre mot de passe" id="passwordConf">
+					</p>
+				</div>
+			</div>
+			<div class="btn-user">
+				<button type="submit" class="btn btn-outline-dark btn-floating m-3">Valider</button>
+			</div>
+</div>
+</form>

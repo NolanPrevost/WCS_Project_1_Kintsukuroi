@@ -1,0 +1,84 @@
+{% extends 'layout.html.twig' %}
+{% block title %} - Filtres{% endblock %}
+
+{% block small_nav %}
+{% include 'Layouts/smallNav.html.twig' %}
+{% endblock %}
+
+{% block content %}
+{% include 'Layouts/navAdmin.html.twig' %}
+
+
+    {% for error in errors %} 
+<p class="mx-auto text-center p-1 alert-warning col-5">{{ error }}</p>
+{% endfor %}
+
+<div class="container d-flex justify-content-around">
+    <div class="col-5">
+        <h2 class="text-center">Liste des couleurs</h2>
+        <div class="d-flex justify-content-end">
+            <a href="/admin/filters/add-color" class="btn btn-light d-flex align-items-center gap-2"><i
+                    class="bi bi-plus-circle" style="font-size: 1.5rem;"></i><span> ajouter une couleur</span></a>
+        </div>
+        {% block color %}{% endblock %}
+        <table class="table h-auto">
+            <thead>
+                <tr>
+                    <th class="text-center align-middle col-3">Couleur</th>
+                    <th class="text-center align-middle col-3">Modifier</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for color in colors %}
+                <tr>
+                    <td class="text-center align-middle">{{ color.name }}</th>
+                    <td class="text-center align-middle">
+                        <div class=" d-flex justify-content-center gap-2">
+                        <a href="/admin/filters/color?id={{ color.id }}" class="btn btn-warning" type="button"><i
+                                class="bi bi-pencil-square"></i></a>
+                        <form action="/admin/filters/delete-color" method="POST">
+                            <input type="hidden" name="id" value="{{ color.id }}">
+                            <button class="btn btn-danger"><i class="bi bi-trash3"></i></button>
+                        </form>
+                    </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="col-5">
+        <h2 class="text-center">Liste des catégories</h2>
+        <div class="d-flex justify-content-end">
+            <a href="/admin/filters/add-category" class="btn btn-light d-flex align-items-center gap-2"><i
+                    class="bi bi-plus-circle" style="font-size: 1.5rem;"></i><span> ajouter une catégorie</span></a>
+        </div>
+        {% block category %}{% endblock %}
+        <table class="table h-auto">
+            <thead>
+                <tr>
+                    <th class="text-center align-middle col-3">Catégorie</th>
+                    <th class="text-center align-middle col-3">Modifier</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for category in filtersCategories %}
+                <tr>
+                    <td class="text-center align-middle">{{ category.type }}</td>
+                    <td class="text-center align-middle">
+                        <div class=" d-flex justify-content-center gap-2">
+                        <a href="/admin/filters/category?id={{ category.id }}" class="btn btn-warning" type="button"><i
+                                class="bi bi-pencil-square"></i></a>
+                        <form action="/admin/filters/delete-category" method="POST">
+                            <input type="hidden" name="id" value="{{ category.id }}">
+                            <button class="btn btn-danger"><i class="bi bi-trash3"></i></button>
+                        </form>
+                    </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends 'layout.html.twig' %}
+{% block title %} - Factures{% endblock %}
+
+{% block small_nav %}
+{% include 'Layouts/smallNav.html.twig' %}
+{% endblock %}
+
+{% block content %}
+{% include 'Layouts/navAdmin.html.twig' %}
+
+<div class="container">
+    <h2 class="text-center mb-4">Commandes</h2>
+        <div class="align-self-center ms-5"><a class="btn dropdown-toggle" href="#" id="invoiceDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Commandes
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="/admin/orders/not-treated">en cours</a></li>
+            <li><a class="dropdown-item" href="/admin/orders/treated">terminées</a></li>
+          </ul>
+        </div>  
+    <table class="table h-auto">
+        <thead>
+            <tr>
+                <th class="text-center align-middle col-1">#id</th>
+                <th class="text-center align-middle col-2">Date</th>
+                <th class="text-center align-middle col-3">Client</th>
+                <th class="text-center align-middle col-2">Total</th>
+                <th class="text-center align-middle col-1">Statut</th>
+                <th class="text-center align-middle col-2">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for invoice in invoices %}
+            <tr><td class="text-center align-middle">{{ invoice.id }}</th>
+            <td class="text-center align-middle">{{ invoice.created_at }}</td>
+            <td class="text-center align-middle">{{ invoice.fullname }}</td>
+            <td class="text-center align-middle">{{ invoice.total }}€</td>
+            <td class="text-center align-middle">
+                        {% if invoice.is_treated == 0 %}
+                        en cours
+                        {% elseif invoice.is_treated == 1 %}
+                        terminée
+                        {% endif %}
+            </td>
+            <td class="text-center align-middle d-flex justify-content-center gap-2">
+                    <a href="/invoices/show?id={{ invoice.id }}" class="btn btn-light border border-secondary" type="button">
+                        <i class="bi bi-eye"></i>
+                    </a>
+                    <form action="/admin/orders/delete" method="POST">
+                        <input type="hidden" name="id" value="{{ invoice.id }}">
+                        <button class="btn btn-danger"><i class="bi bi-trash3"></i></button>
+                    </form>
+                    <form action="">
+                        <input type="hidden" name="id" value="{{ invoice.id }}">
+                        {% if invoice.is_treated == 0 %}
+                        <button class="btn btn-light border border-dark"><i class="bi bi-send"></i></button>
+                        {% elseif invoice.is_treated == 1 %}
+                        <button class="btn btn-light border border-dark"><i class="bi bi-send-check-fill"></i></button>
+                        {% endif %}
+                    </form>
+            </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+            </table>
+</div>
+{% endblock %}

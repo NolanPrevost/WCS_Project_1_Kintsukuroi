@@ -1,0 +1,34 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    {% include 'Layouts/userNav.html.twig' %}
+    <table class="table h-auto">
+        <thead>
+            <tr>
+                <th class="text-center align-middle col-1">#id</th>
+                <th class="text-center align-middle col-2">Date</th>
+                <th class="text-center align-middle col-2">Total</th>
+                <th class="text-center align-middle col-1">Statut</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for invoice in invoices %}
+            <tr><td class="text-center align-middle">{{ invoice.id }}</th>
+            <td class="text-center align-middle">{{ invoice.created_at }}</td>
+            <td class="text-center align-middle">{{ invoice.total }}€</td>
+            <td class="text-center align-middle">
+                {% if invoice.is_treated == 0 %}
+                <a href="/invoices/show?id={{ invoice.id }}" class="btn btn-primary border border" type="button">
+                    En cours<i class="bi bi-eye ms-3"></i>
+                </a>
+                {% elseif invoice.is_treated == 1 %}
+                <a href="/invoices/show?id={{ invoice.id }}" class="btn btn-success border border" type="button">
+                    Envoyée<i class="bi bi-eye ms-3"></i>
+                </a>
+                {% endif %}
+            </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+            </table>
+{% endblock %}

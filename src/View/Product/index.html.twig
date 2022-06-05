@@ -1,0 +1,70 @@
+{% extends 'layout.html.twig' %}
+
+{% block small_nav %}
+{% include 'Layouts/smallNav.html.twig' %}
+{% endblock %}
+
+{% block content %}
+<div class="all-products-title mt-5 mb-1">
+    <h1 class="text-center">
+        {% if get.cat_id is defined %}
+        {% for category in categories %}
+        {% if get.cat_id == category.id %}
+        {{ category.type }}
+        {% endif %}
+        {% endfor %}
+        {% else %}
+        Nos produits
+        {% endif %}
+        </h1><br>
+</div>
+<nav class="small-nav navbar navbar-light">
+    <ul class="container-fluid d-flex justify-content-evenly">
+        <span class="btn-group">
+          <button type="button" class="btn btn-cat dropdown-toggle" data-bs-toggle="dropdown">
+            Tri par couleur
+          </button>
+          <ul class="dropdown-menu bg-account" aria-expanded="false">
+              {% for color in colors %}
+              <li>
+                {% if get.cat_id is defined %}
+                <a class="dropdown-item" href="/products/filters?col={{ color.id }}&cat_id={{ get.cat_id }}">{{ color.name }}</a>
+                {% else %}
+                <a class="dropdown-item" href="/products/color?id={{ color.id }}">{{ color.name }}</a>
+                {% endif %}
+              </li>
+              {% endfor %}
+          </ul>
+        </span>
+    </ul>
+  </nav>
+    <p>{{ error }}</p>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for product in products %}
+        <div>
+            <div class="all-products-content">
+                <div class="col position-relative">
+                    <div class="card-borderless h-100">
+                        <div class="img-products">
+                            <img src="{{ product.image }}"  style="width: 300px; height: 300px; object-fit: cover;" class="card-img-top" alt="..." />
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <a class="stretched-link-products stretched-link" href="/products/show?id={{ product.id }}">{{ product.name }} {{ product.price }} €</a>                  
+                            </h5>
+                            <p class="card-text-description text-center">{{ product.category }}<br>
+                                Couleur : {{ product.color }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <form method="POST">
+            <div class="btn-add-card-products">
+                <input type="text" class="d-none" name="add_product" value="{{product.id}}">
+                <button type="submit" class="btn btn-outline btn-sm btn-floating m-1" style="border-color: #202549; color:#202549;"><strong>Ajouter au panier</strong></a><i class="fas fa-cart-arrow-down" style="width: 100%;"></i>
+                </div>
+        </form>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

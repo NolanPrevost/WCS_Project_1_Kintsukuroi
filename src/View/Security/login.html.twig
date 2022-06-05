@@ -1,0 +1,35 @@
+{% extends 'layout.html.twig' %}
+{% block title %} - Login {% endblock %}
+{% block content %}
+<div class="body-login">
+<div class="text-center">
+	<br>
+	<br>
+	<h1 class="title-login">Connection</h1>
+{% for error in errors %}
+<div class="alert-button-info">
+	<div class="alert alert-warning alert-dismissible fade show " style="width: 480px;" role="alert">
+{{error}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+	</div>
+</div>
+{% endfor %}
+<form method="post">
+	<div class="form-login col-3">
+	<label for="email" class="form-label">Adresse email</label>
+	<input type="email" name="email" placeholder="Entrez votre email" id="email">
+	</div>
+	<div class="form-login col-3">
+    <label for="password" class="form-label">Mot de passe</label>
+	<input type="password" name="password" placeholder="Entrez votre mot de passe" id="password">
+	</div><br>
+	<div class="btn-login col-3">
+	<button type="submit" class="btn btn-outline-dark btn-floating m-1">Me connecter</button>
+	</div>
+	<div class="forgot-password">Vous avez oublié votre mot de passe ? <a href="/">Contactez-nous</a></div>
+	<p class="not-registrer">Pas encore de compte ? <a href="/register">Inscrivez-vous</a></p>
+	</div></br><br><br>
+</form>
+</div>
+</div>
+{% endblock %}

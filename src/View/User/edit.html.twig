@@ -1,0 +1,14 @@
+{% extends 'layout.html.twig' %}
+{% block content %}
+{% if session.user.is_admin == 1 %}
+{{ include("Layouts/navAdmin.html.twig") }}
+{% elseif session.user.is_admin == 0 %}
+{{ include("Layouts/userNav.html.twig") }}
+{% endif %}
+<br />
+<h2 class="text-center mb-4">
+    {{ user.firstname }} {{ user.lastname }}, modifiez vos informations
+</h2>
+{% include 'User/_form.html.twig' %}
+<a href="/user/show?id={{ user.id }}"><button>Retour</button></a>
+{% endblock %}

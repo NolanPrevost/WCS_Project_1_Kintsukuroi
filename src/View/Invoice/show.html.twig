@@ -1,0 +1,109 @@
+{% extends 'layout.html.twig' %}
+{% block title %} - Facture n°{{ invoice.id }}{% endblock %}
+{% block content %}
+<div class="container">
+    {% if session.user.is_admin == 1 %}
+   {{ include('Layouts/navAdmin.html.twig') }}
+    {% else %}
+    {{ include('Layouts/userNav.html.twig') }}
+    {% endif %}
+</div>
+<div class="container">
+    <div class="offset-xl-2 col-xl-8 col-lg-12 col-md-12 col-sm-12 col-12 padding">
+        <div class="card">
+            <div class="card-header p-4">
+                <div class="float-right">
+                    <h3 class="mb-0">Numéro de facture : {{ invoice.id}}</h3>
+                    Date : {{ invoice.created_at }}
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row mb-4">
+                    <div class="col-sm-6">
+                        <h5 class="mb-3">De :</h5>
+                        <h3 class="text-dark mb-1">Kintsukuroi</h3>
+                        <div>Email : contact@kintsukuroi.com</div>
+                        <div>Phone : 07 22 33 44 55</div>
+                    </div>
+                    <div class="col-sm-6 ">
+                        <h5 class="mb-3">À :</h5>
+                        <h3 class="text-dark mb-1">{{ invoice.fullname }}</h3>
+                        <div>Email : {{ invoice.email }}</div>
+                        <div>Phone : {{ invoice.phone }}</div>
+                    </div>
+                    <div class="col-sm-6 ">
+                        <h5 class="text-dark mt-3">Adresse de livraison</h5>
+                        <div>{{ invoice.recipient_firstname }} {{ invoice.recipient_lastname }}</div>
+                        <div>{{ invoice.delivery_address }}</div>
+                    </div>
+                    <div class="col-sm-6 ">
+                        <h5 class="text-dark mt-3">Adresse de facturation</h5>
+                        <div>{{ invoice.fullname }}</div>
+                        <div><div>{{ invoice.address }}</div></div>
+                    </div>
+                    
+
+                </div>
+                <div class="table-responsive-sm">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th class="center">#</th>
+                                <th>Produit</th>
+                                <th class="right">Price</th>
+                                <th class="center">Qty</th>
+                                <th class="right">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for invProd in invProds %}
+                            <tr>
+                                <td class="center">{{ invProd.product_id }}</td>
+                                <td class="left strong">{{ invProd.name }}</td>
+                                <td class="right">{{ invProd.price }} €</td>
+                                <td class="center">{{ invProd.quantity }}</td>
+                                <th class="right">{{ invProd.price * invProd.quantity }} €</th>
+                                {% endfor %}
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-sm-5">
+                    </div>
+                    <div class="col-lg-4 col-sm-5 ml-auto">
+                        <table class="table table-clear">
+                            <tbody>
+                                <tr>
+                                    <td class="left">
+                                        <strong class="text-dark">Subtotal</strong>
+                                    </td>
+                                    <td class="right">{{ invoice.total - ((invoice.total * 20) / 100) }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="left">
+                                        <strong class="text-dark">TVA (20%)</strong>
+                                    </td>
+                                    <td class="right">{{ (invoice.total * 20) / 100 }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="left">
+                                        <strong class="text-dark">Total</strong>
+                                    </td>
+                                    <td class="right">
+                                        <strong class="text-dark">{{ invoice.total }} €</strong>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer bg-white">
+                <p class="mb-0">kintsukuroi.com</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

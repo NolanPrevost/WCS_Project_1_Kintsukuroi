@@ -1,0 +1,39 @@
+{% extends 'layout.html.twig' %}
+
+{% block small_nav %}
+{% include 'Layouts/smallNav.html.twig' %}
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row align-items-center">
+        <div class="col">
+            <img src="{{ product.image }}" style="width: 500px; height: 500px; object-fit: cover;"
+                alt="194x228" /><br><br>
+        </div>
+        <div class="col">
+            <div class="card-title" "stretched-link-product">
+                <br>
+                <h1 class="stretched-link-product">{{ product.name }}</h1>
+                <h3 class="stretched-link-product">{{ product.price }} €</h3><br>
+            </div>
+            <p class="card-text-description" align="left" style="width: 520px;">{{ product.description }}</p><br>
+            <div class="d-flex col-xs-6 gap-2">
+                <form method="POST">
+                    <div class="btn-add-card-products" "cart mt-4 align-items-center">
+                        <input type="text" class="d-none" name="add_product" value="{{product.id}}">
+                        <button type="submit" class="btn btn-outline btn-sm btn-floating m-1"
+                            style="border-color: #202549; color:#202549;"><strong>Ajouter au panier</strong></a><i
+                                class="fas fa-cart-arrow-down" style="width: 100%;"></i>
+                    </div>
+                </form>
+                <div class="btn-add-card-products" "cart mt-4 align-items-center gap-2">
+                    <button type="submit" class="btn btn-outline btn-sm btn-floating m-1"
+                        style="border-color: #202549; color:#202549;"><strong>Ajouter aux favoris</strong></a><i
+                            class="fas fa-heart" style="width: 100%;"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

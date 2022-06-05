@@ -1,0 +1,39 @@
+{% extends 'layout.html.twig' %}
+
+{% block small_nav %}
+{% include 'Layouts/smallNav.html.twig' %}
+{% endblock %}
+
+
+{% block homeCarousel %}
+{% include 'Layouts/carousel.html.twig' %}
+{% endblock %}
+
+{% block content %}
+<div class="text-home-description">
+   <p class="text-center" style="color: #202549;"><br><br>Cette technique ancestrale, découverte au XVème siècle au Japon, consiste à réparer <br> un objet brisé en soulignant ses fissures avec de l’or, au lieu de les masquer. </p>
+</div><br>
+   <div class='container'>
+      <div class='row'>
+         <div class='col-md-4 text-center'>
+            <a href="https://fr.wikipedia.org/wiki/Kintsugi" target="_blank"><img class='img-circle' src='https://i.ibb.co/RgfqC1k/Adobe-Stock-403407927.jpg' width="200" height="200"/></a>
+            <h2 class="circle-title-home">Histoire</h2>
+            <p class="p-home-circle">Un vase brisé, une tasse ébréchée… Plutôt que de recoller les morceaux en cachant les cassures, et si on les réparait selon la méthode Kintsugi ?</p>
+         </div>
+         <div class='col-md-4 text-center'>
+            <a href="https://www.franceculture.fr/design/le-kintsugi-lart-de-reparer-les-objets-en-sublimant-les-cassures" target="_blank"><img class='img-circle' src='https://i.ibb.co/6B06b8x/Adobe-Stock-368638765.jpg' width="200" height="200"/></a>
+            <h2 class="circle-title-home">Le Kintsugi</h2>
+            <p class="p-home-circle">Le kintsugi (金継ぎ?, « jointure en or ») ou kintsukuroi (金継ぎ, « réparation en or ») est une méthode japonaise de réparation des porcelaines ou céramiques brisées au moyen de laque saupoudrée de poudre d'or.</p>
+         </div>
+         <div class='col-md-4 text-center'>
+            <a href="https://maze.fr/2021/06/kintsugi-lart-de-sublimer-le-casse/" target="_blank"><img class='img-circle' src='https://i.ibb.co/vVF8hqj/Adobe-Stock-463918140.jpg' width="200" height="200"/></a>
+            <h2 class="circle-title-home">Culture</h2>
+            <p class="p-home-circle">Cette discipline japonaise nous incite à accepter les objets avec leurs imperfections.</p>
+         </div>
+      </div>
+   </div><br><br>
+
+<div class="video-home">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/9gI3CU3lKyk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div><br><br>
+{% endblock %}

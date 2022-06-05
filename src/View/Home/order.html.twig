@@ -1,0 +1,85 @@
+{% extends "layout.html.twig" %} {% block content %}
+
+<h1>Veuillez remplir les informations de paiement et de livraison</h1>
+<hr>
+<form method="post">
+    <div class="col-6 me-auto ms-auto">
+        <div class="mb-3 row">
+            <h5>
+                Commanditaire : {{ session.user.firstname }}
+                {{ session.user.lastname }}
+            </h5>
+            <h6>Livrer la commande à :</h6>
+        </div>
+        <hr>
+        <div class="row d-flex align-items-center">
+            <div class="form-row">
+                <div class="col-md-6">
+                    <p class="marge-right-form-user">
+                        <label for="recipient_firstname">Prénom :</label>
+                        <input
+                            type="text"
+                            value="{{ session.user.firstname }}"
+                            class="form-control"
+                            name="recipient_firstname"
+                            id="recipient_firstname"
+                            required
+                        />
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <p class="marge-left-form-user">
+                        <label for="recipient_lastname">Nom :</label>
+                        <input
+                            type="text"
+                            value="{{ session.user.lastname }}"
+                            class="form-control"
+                            name="recipient_lastname"
+                            id="recipient_lastname"
+                            required
+                        />
+                    </p>
+                </div>
+            </div>
+            <div class="form-row mb-4">
+                <div class="form-group col-12">
+                    <label for="delivery_address">Adresse :</label>
+                    <input
+                        type="text"
+                        value="{{ session.user.address }}"
+                        class="form-control"
+                        name="delivery_address"
+                        id="delivery_address"
+                        required
+                    />
+                </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                  <p class="marge-left-form-user">
+                      <label for="payment">Moyen de paiement :</label>
+                      <input
+                          type="text"
+                          class="form-control"
+                          name="payment"
+                          placeholder="Entrez votre moyen de paiement"
+                          id="payment"
+                          required
+                      />
+                  </p>
+              </div>
+          </div>
+          <div class="form-row">
+            {% for error in errors %}
+            <p class="mx-auto text-center p-1 alert-warning col-5">{{ error }}</p>
+        {% endfor %}
+          </div>
+        </div>
+        
+        <div class="d-grid col-3 ms-auto me-auto">
+            <button class="btn btn-outline-dark" type="submit">Commander</button>
+            <br />
+        </div>
+    </div>
+</form>
+{% endblock %}

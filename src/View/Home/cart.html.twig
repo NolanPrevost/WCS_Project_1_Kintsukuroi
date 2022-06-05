@@ -1,0 +1,98 @@
+{% extends 'layout.html.twig' %}
+{% block title %} - Cart{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="text-title-cart">
+        <h2 class="text-center mt-5 mb-5">Mon panier</h2>
+    </div>
+    <div class="d-flex justify-content-around mt-3">
+        <div class="col-md-8">
+            <table class="table h-auto">
+                <thead>
+                    <tr>
+                        <th class="text-center align-middle col-1">Image</th>
+                        <th class="text-center align-middle col-3">Produit</th>
+                        <th class="text-center align-middle col-1">Prix</th>
+                        <th class="text-center align-middle col-1">Quantité</th>
+                        <th class="text-center align-middle col-1">Total</th>
+                        <th class="text-center align-middle col-1">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for product in cart %}
+                    <tr>
+                        <td class="text-center align-middle"><img src="{{ product.image }}"
+                                style="width: 75px; height: 75px; object-fit: cover; " class="img-thumbnail" alt="...">
+                            </th>
+                        <td class="text-left align-middle">
+                            <a href="/products/show?id={{ product.id }}" style="text-decoration: none;"><h5 class="name-product-resume">{{ product.name }}</h5></a>
+                                <p class="text-product-dscpt-cart">{{ product.category }}<br>
+                                    Couleur : {{ product.color }}</p>
+                        </td>
+                        <td class="text-center align-middle">{{ product.price }}€</td>
+                        <td class="text-center align-middle">{{ product.qty_cart }}</td>
+                        <td class="text-center align-middle">{{ product.price * product.qty_cart }}€</td>
+                        <td class="text-center align-middle">
+                            <form action="/cart" method="POST">
+                                <input type="hidden" name="delete_id" id="delete_id" value="{{ product.id }}">
+                                <button class="btn btn-danger"><i class="bi bi-trash3"></i></button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% if session.cart is defined %}
+            <div class="d-flex justify-content-end">
+                <table class="mb-4 col-6 h-auto border">
+                    <tr>
+                        <th class="col-2">
+                            </td>
+                        <th class="col-2 p-2 text-resume">Récapitulatif</th>
+                        <th class="col-2">
+                            </td>
+                    </tr>
+                    <tr>
+                        <td class="ps-3">TOTAL HT</td>
+                        <td></td>
+                        <td class="text-end pe-3">{{ session.ht_price }}€</td>
+                    </tr>
+                    <tr>
+                        <td class="ps-3">TVA</td>
+                        <td></td>
+                        <td class="text-end pe-3">{{ session.tva_price }}€</td>
+                    </tr>
+                    <tr>
+                        <td class="ps-3 pb-2 border-bottom">SOUS-TOTAL<br>({{ session.nb_products }}
+                            {% if session.nb_products == 1 %}item{% else %}items{% endif %})</td>
+                        <td class="border-bottom"></td>
+                        <td class="text-end pe-3 border-bottom">{{ session.total_price }}€</td>
+                    </tr>
+                    <tr>
+                        <td class="ps-3 pt-2">LIVRAISON</td>
+                        <td></td>
+                        <td class="text-end pe-3">TDB</td>
+                    </tr>
+                    <tr>
+                        <td class="ps-3">TOTAL</td>
+                        <td></td>
+                        <td class="text-end pe-3">{{ session.total_price }}€</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="py-4">
+                            {% if session.user is defined %}
+                            <a href="/order" class="btn-cart">Commander</a>
+                            {% else %}
+                            <a href="/login" class="btn-cart">Commander</a>
+                            {% endif %}
+                        </td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,90 @@
+{% include 'Layouts/navAdmin.html.twig' %}
+
+
+{% for error in errors %}
+<p class="mx-auto text-center p-1 alert-warning col-5">{{ error }}</p>
+{% endfor %}
+
+
+
+<form method="post">
+    <div class="container">
+        <h2 class="text-center mb-4">Editer un utilisateur</h2>
+        <div class="col-6 me-auto ms-auto">
+            <div class="mb-3 row">
+                <label for="clientNumber" class="col-sm-3 col-form-label">Numéro client</label>
+                <div class="col-sm-9">
+                    <input type="text" readonly class="form-control-plaintext" id="clientNumber" value="{{ user.id }}"
+                        name="id">
+                </div>
+            </div>
+            <div class="mb-3 row d-flex align-items-center">
+                <label for="clientNumber" class="col-sm-3 col-form-label">Administrateur</label>
+                <div class="col-sm-9">
+                    <div class="form-row">
+                        {% if user.is_admin == 1 %}
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="is_admin" id="is_admin" value="1" checked>
+                            <label class="form-check-label" for="inlineRadio1">oui</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="is_admin" id="is_admin" value="0">
+                            <label class="form-check-label" for="inlineRadio2">non</label>
+                        </div>
+                        {% elseif user.is_admin == 0 %}
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="is_admin" id="is_admin" value="1">
+                            <label class="form-check-label" for="inlineRadio1">oui</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="is_admin" id="is_admin" value="0" checked>
+                            <label class="form-check-label" for="inlineRadio2">non</label>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-6">
+                        <p class="marge-right-form-user">
+                            <label for="firstname">Prénom :</label>
+                            <input type="text" value="{{ user.firstname }}" class="form-control" name="firstname"
+                                placeholder="Entrez votre prénom" id="firstname">
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <p class="marge-left-form-user">
+                            <label for="lastname">Nom :</label>
+                            <input type="text" value="{{ user.lastname }}" class="form-control" name="lastname"
+                                placeholder="Entrez votre nom" id="lastname">
+                        </p>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <p class="marge-right-form-user">
+                            <label for="email">Email :</label>
+                            <input type="text" value="{{ user.email }}" class="form-control" name="email"
+                                placeholder="Entrez votre email" id="email">
+                        </p>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <p class="marge-left-form-user">
+                            <label for="phone">Téléphone :</label>
+                            <input type="text" value="{{ user.phone }}" class="form-control" name="phone"
+                                placeholder="Entrez votre numéro de téléphone" id="phone">
+                        </p>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-12">
+                        <label for="address">Adresse :</label>
+                        <input type="text" value="{{ user.address }}" class="form-control" name="address"
+                            placeholder="Entrez votre adresse" id="address">
+                    </div>
+                </div>
+            </div>
+            <div class="d-grid col-2 ms-auto me-auto mt-4">
+                <button class="btn btn-outline-dark" type="submit">Editer</button><br>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,10 @@
+{% extends "layout.html.twig" %}
+
+{% block content %}
+<div class="container text-center my-3">
+    <h1>Merci {{ session.user.firstname }} {{ session.user.lastname }},</h1>
+    <h2>Votre commande a été enregistrée.</h2>
+    <p class="mt-3">Un email de confirmation vient de vous être envoyé à l'adresse {{ session.user.email }}.<br>
+        Pour suivre la préparation de votre commande, rendez-vous sur votre compte dans l'onglet "<a href="/invoices/user-invoices?id={{ session.user.id }}" class="text-dark">Mes commandes</a>".<br>
+</div>
+{% endblock %}

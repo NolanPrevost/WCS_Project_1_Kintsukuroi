@@ -1,0 +1,11 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+<div class="text-center">
+    <h1 class="create-account-title">Créer mon compte</h1>
+<div class="user-member">
+    {% include 'User/_form.html.twig' %}
+    <p>Déjà membre ? <a href="/login">Se connecter</a></p>
+</div>
+</div>
+{% endblock %}

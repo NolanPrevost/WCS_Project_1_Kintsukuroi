@@ -1,0 +1,71 @@
+{% include 'Layouts/navAdmin.html.twig' %}
+
+{% for error in errors %}
+<p class="mx-auto text-center p-1 alert-warning col-5">
+{{ error }}</p>
+{% endfor %}
+
+
+<form method="post">
+    <div class="container">
+        <h2 class="text-center mb-4">Ajouter ou modifier un produit</h2>
+        <div class="col-6 me-auto ms-auto">
+            <input type="hidden" value="{{ product.id }}" name="id" required />
+            <div class="mb-3 row">
+                <label for="name" class="col-sm-3 col-form-label">Nom du produit</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" value="{{ product.name }}" name="name" id="name" required />
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="description" class="col-sm-3 col-form-label">Description</label>
+                <div class="col-sm-9">
+                    <textarea type="text" class="form-control" name="description" id="description" required>{{ product.description }}</textarea>
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="image" class="col-sm-3 col-form-label">Image</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" value="{{ product.image }}" name="image" id="image" required />
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="price" class="col-sm-3 col-form-label">Prix</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" value="{{ product.price }}" name="price" id="price" required />
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="quantity" class="col-sm-3 col-form-label">Quantité</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" value="{{ product.quantity }}" name="quantity" id="quantity" required />
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="category" class="col-sm-3 col-form-label">Catégorie</label>
+                <div class="col-sm-9">
+                    <select class="form-select" name="category_id" aria-label="Default select example">
+                        <option value="{{ product.category_id }}" selected>{{ product.category }}</option>
+                        {% for category in categories %}
+                        <option value="{{ category.id }}">{{ category.type }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="color" class="col-sm-3 col-form-label">Couleur</label>
+                <div class="col-sm-9">
+                    <select class="form-select" name="color_id" aria-label="Default select example">
+                        <option value="{{ product.color_id }}" selected>{{ product.color }}</option>
+                        {% for color in colors %}
+                        <option value="{{ color.id }}">{{ color.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <div class="d-grid col-2 ms-auto me-auto mt-4">
+                <button class="btn btn-outline-dark" type="submit">Ajouter/Editer</button><br>
+            </div>
+        </div>
+    </div>
+</form>

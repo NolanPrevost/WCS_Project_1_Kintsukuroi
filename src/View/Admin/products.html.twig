@@ -1,0 +1,62 @@
+{% extends 'layout.html.twig' %}
+{% block title %} - Produits{% endblock %}
+
+{% block small_nav %}
+{% include 'Layouts/smallNav.html.twig' %}
+{% endblock %}
+
+{% block content %}
+{% include 'Layouts/navAdmin.html.twig' %}
+
+<div class="container">
+    <h2 class="text-center">Liste des produits</h2>
+    <div class="d-flex justify-content-between mb-4 mt-3">
+        <form method="GET" action="/admin/search-product" class="d-flex">
+            <input class="form-control me-2" id="keywords" name="keywords" type="search" placeholder="mot clé" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Recherche</button>
+        </form>
+        <a href="/admin/add-product" class="btn btn-light d-flex align-items-center gap-2"><i class="bi bi-plus-circle"
+                style="font-size: 1rem;"></i><span>Ajouter un produit</span></a>
+    </div>
+    <table class="table h-auto">
+        <thead>
+            <tr>
+                <th class="text-center align-middle col-1">#id</th>
+                <th class="text-center align-middle col-2">Produit</th>
+                <th class="text-center align-middle col-3">Description</th>
+                <th class="text-center align-middle col-2">Image</th>
+                <th class="text-center align-middle col-1">Prix</th>
+                <th class="text-center align-middle col-1">Qté</th>
+                <th class="text-center align-middle col-2">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{ error }}
+            {% for product in products %}
+            <tr>
+                <td class="text-center align-middle">{{ product.id }}</th>
+                <td class="text-center align-middle">{{ product.name }}</td>
+                <td class="text-center align-middle">{{ product.category }}<br>
+                    Couleur : {{ product.color }}</td>
+                <td class="text-center align-middle"><img src={{ product.image }}
+                        style="width: 75px; height: 75px; object-fit: cover; " class="img-thumbnail" alt="..."></td>
+                <td class="text-center align-middle">{{ product.price }}€</td>
+                <td class="text-center align-middle">{{ product.quantity }}</td>
+                <td class="text-center align-middle">
+                    <div class=" d-flex justify-content-center gap-2">
+                        <a href="/products/show?id={{ product.id }}" class="btn btn-light border border-secondary"
+                        type="button"><i class="bi bi-eye"></i></a>
+                    <a href="/admin/edit-product?id={{product.id}}" class="btn btn-warning" type="button"><i
+                            class="bi bi-pencil-square"></i></a>
+                    <form action="/admin/delete-product" method="POST">
+                        <input type="hidden" name="id" value="{{ product.id }}">
+                        <button class="btn btn-danger"><i class="bi bi-trash3"></i></button>
+                    </form>
+                </div>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,401 @@
+@import url('https://fonts.googleapis.com/css2?family=Julius+Sans+One&family=Roboto:wght@400&display=swap');
+
+body {
+    background-color: white;
+}
+
+/* Nav bar */
+.nav-header {
+    background-color: #202549;
+    border-top: 2px #899BB7 solid;
+    margin-bottom: 0;
+}
+
+.logo {
+    position: relative;
+}
+
+.site-name {
+    font-family: 'Julius Sans One', sans-serif;
+    color: #fffbf2;
+}
+
+.site-slogan {
+    color: #b8994a;
+    font-size: 1rem;
+    position: absolute;
+    left: 12.5rem;
+    top: 3.25rem;
+}
+
+.nav-search,
+.nav-search:focus {
+    background-color: #202549;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    border: 0px;
+    border-bottom: 3px solid #b8994a;
+}
+
+.nav-search-btn {
+    background-color: #202549;
+    color: #fffbf2;
+    border: 0px;
+    border-bottom: 3px solid #b8994a;
+}
+
+.nav-btn {
+    margin-left: 0.75rem;
+    margin-right: 0.75rem;
+    margin-top: 0.375rem;
+    margin-bottom: 0.375rem;
+}
+
+.bg-account {
+    background-color: #fffbf2;
+}
+
+.nav-text {
+    color: #fffbf2;
+}
+
+/* small nav*/
+.sm-nav {
+    background-color: #899BB7;
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+    list-style-type: none;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+    margin-top: -0.5rem;
+    margin-bottom: -0.5rem;
+}
+
+.nav-a {
+    text-decoration: none;
+    color: #fffbf2;
+}
+
+.nav-a:hover {
+    text-decoration: none;
+    color: #202549;
+}
+
+.btn-cat {
+    padding: 0;
+}
+
+/* login view */
+.title-login {
+    font-family: 'julius sans one';
+}
+
+.form-login {
+    display: flex;
+    flex-direction: column;
+    margin-left: 38%;
+    margin-top: 25px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.forgot-password {
+    padding: 15px;
+    margin: 5px;
+    text-align: center;
+}
+
+.nav-link {
+    color: aliceblue;
+    font-family: 'Roboto', sans-serif;
+    padding: 5px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+.btn-login {
+    margin-left: 38%;  
+} 
+
+/* registrer view */
+
+.form-user {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    font-family: 'Roboto', sans-serif;
+    margin: 5px 30vw;
+    margin-bottom: 15px;
+}
+
+.create-account-title {
+    margin: 5px;
+    padding: 40px;
+    font-family: 'julius sans one';
+    height: 7vh;
+    overflow: hidden;
+}
+
+.btn-user {
+    padding: 0.15rem 2rem;
+    color: black;
+    margin: 5px 10vw;
+    font-family: 'Roboto', sans-serif;
+}
+
+.user-member {
+    font-family: 'Roboto', sans-serif;
+    margin: 20px;
+    padding: 15px;
+    overflow: hidden;
+}
+
+/**form a revoir*/
+.form-row {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.marge-right-form-user {
+    margin-right: 10px;
+}
+
+.marge-left-form-user {
+    margin-left: 10px;
+}
+
+.confirm-password {
+    margin-bottom: 10px;
+}
+
+/** footer */
+
+.footer-copyright {
+    font-family: 'Roboto', sans-serif;
+}
+
+.footer-content {
+    background-color: #202549;
+}
+
+
+/**logo footer*/
+.instagram-logo {
+    margin-bottom: 5px;
+}
+
+.google-logo {
+    margin-bottom: 5px;
+}
+
+.facebook-logo {
+    margin-bottom: 5px;
+}
+
+/**Show all*/
+.stretched-link-products {
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    color: black;
+    font-family: 'julius sans one';
+
+}
+
+.all-products-content {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    margin-left: 10px;
+    margin-right: auto;
+}
+
+.card-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.btn-add-card-products {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+    transition: transform .1s; 
+}
+
+.btn-add-card-products:hover{
+    -ms-transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+    }
+
+.img-products {
+    max-width: 100%;
+    height: auto;
+    overflow: 10px;
+}
+
+.all-products-title {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-family: 'Julius sans one';
+}
+
+.alert-button-info {
+    display: flex;
+    justify-content: center;
+}
+
+/**products text content*/
+
+.stretched-link-products:hover {
+    color: #b8994a;
+}
+
+.stretched-link-products {
+    color: #202549;
+}
+
+.card-text-description {
+    text-align: justify;
+}
+
+/*cart oder resume*/
+.cart-order-resume {
+    box-sizing: border-box;
+    font-family:'Roboto', sans-serif;
+    color: #202549;
+}
+
+.cart-infos {
+    position: fixed;
+    bottom: 24%;
+    object-fit: cover; 
+    background-color: transparent;
+    border: 1px solid #202549;
+    justify-content: center;
+}
+
+.btn-cart {
+    border: 1px solid #202549;
+    border-radius: 1em;
+    text-align: center;
+    font-family:'julius sans one';
+    font-weight: bold;
+    background-color: transparent;
+    color: #202549;
+    padding: 1rem;
+    text-decoration: none;
+}
+
+.btn-cart:hover {
+    border: 1px solid #b8994a;
+    border-radius: 1em;
+    text-align: center;
+    font-family:'julius sans one';
+    font-weight: bold;
+    color: #b8994a;
+    padding: 1rem;
+    text-decoration: none;
+}
+
+.text-resume {
+    font-family:'julius sans one';
+    color: #b8994a;
+}
+
+.text-title-cart {
+    color: black;
+    font-family: 'julius sans one';
+
+}
+
+.text-product-dscpt-cart {
+    text-align: justify;
+}
+
+.name-product-resume {
+    color: #b8994a;
+}
+
+.final-order-text {
+    color: #b8994a;
+    text-decoration: none;
+}
+
+/* Home */
+.text-home-description {
+font-family: 'Roboto', sans-serif;
+}
+
+.video-home {
+    display: flex;
+    justify-content: center;
+}
+
+.img-circle {
+    border-radius: 50%;
+    filter: grayscale(1);
+}
+
+.img-circle:hover {
+    border-radius: 50%;
+    filter: grayscale(0);
+}
+
+.circle-title-home {
+    font-family: 'Julius sans one';
+    text-align: center;
+    color: #b8994a;
+}
+
+.p-home-circle {
+    font-family: 'Roboto', sans-serif;
+    text-align: justify;
+    color: #202549;
+}
+
+.img-home-page {
+    display: inline-block;
+}
+
+.image-home-page {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.image-home-page2 {
+    display: flex;
+    justify-content: space-around;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+/* home carousel */
+#myCarousel {
+  background-color: none;
+}
+
+.carousel-control-next {
+    filter: invert(100%);
+    }
+
+.carousel-control-prev {
+filter: invert(100%);
+}
+
+
+
+/**Show one*/
+.stretched-link-product {
+    display: flex;
+    justify-content: left;
+    text-decoration: none;
+    color: black;
+    font-family: 'julius sans one';
+
+}
+

@@ -1,0 +1,58 @@
+{% extends 'layout.html.twig' %}
+{% block title %} - Utilisateurs{% endblock %}
+
+{% block small_nav %}
+{% include 'Layouts/smallNav.html.twig' %}
+{% endblock %}
+
+{% block content %}
+{% include 'Layouts/navAdmin.html.twig' %}
+
+<div class="container">
+    <h2 class="text-center mb-4">Liste des utilisateurs</h2>
+    <div class="d-flex justify-content-between mb-4 mt-3">
+        <form method="GET" action="/admin/search-user" class="d-flex">
+            <input class="form-control me-2" id="keywords" name="keywords" type="search" placeholder="mot clé" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Recherche</button>
+        </form>
+    </div>
+    <table class="table h-auto">
+        <thead>
+            <tr>
+                <th class="text-center align-middle col-1">#id</th>
+                <th class="text-left align-middle col-1">Nom</th>
+                <th class="text-left align-middle col-1">Prénom</th>
+                <th class="text-left align-middle col-2">Email</th>
+                <th class="text-left align-middle col-3">Adresse</th>
+                <th class="text-left align-middle col-1">Téléphone</th>
+                <th class="text-center align-middle col-2">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{ error }}
+            {% for user in users %}
+            <tr>
+                <td class="text-center align-middle">{{ user.id }}</th>
+                <td class="text-left align-middle">{{ user.lastname }}</td>
+                <td class="text-left align-middle">{{ user.firstname }}</td>
+                <td class="text-left align-middle">{{ user.email }}</td>
+                <td class="text-left align-middle">{{ user.address }}</td>
+                <td class="text-left align-middle">{{ user.phone }}</td>
+                <td class="text-center align-middle">
+                    <div class=" d-flex justify-content-center gap-2">
+                    <a href="mailto:{{ user.email }}" class="btn btn-secondary" type="button"><i
+                            class="bi bi-envelope-plus"></i></a>
+                    <a href="/admin/users/edit?id={{user.id}}" class="btn btn-warning" type="button"><i
+                            class="bi bi-pencil-square"></i></a>
+                            <form action="/admin/users/delete" method="POST">
+                                <input type="hidden" name="id" value="{{ user.id }}">
+                                <button class="btn btn-danger"><i class="bi bi-trash3"></i></button>
+                            </form>
+                        </div>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends 'layout.html.twig' %}
+{% block title %} - Profile{% endblock %}
+{% block content %}
+<div class="container">
+    <p class="h1 mt-3">Interface admin/utilisateur</p>
+    
+    {{ {% include "Layouts/adminNav.html.twig" %}}}
+    
+</div>
+<div class="container">
+    <div class="col-5 me-auto ms-auto">
+        <div class="mb-3 row">
+            <label for="clientNumber" class="col-sm-4 col-form-label">Numéro client</label>
+            <div class="col-sm-8">
+            <input type="text" readonly class="form-control-plaintext" id="clientNumber" value="105437654">
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="lastname" class="col-sm-4 col-form-label">Nom</label>
+            <div class="col-sm-8">
+            <input type="text" readonly class="form-control-plaintext" id="lastname" value="Meow">
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="firstname" class="col-sm-4 col-form-label">Prénom</label>
+            <div class="col-sm-8">
+            <input type="text" readonly class="form-control-plaintext" id="firstname" value="Doug">
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="email" class="col-sm-4 col-form-label">Email</label>
+            <div class="col-sm-8">
+            <input type="text" readonly class="form-control-plaintext" id="email" value="doug.meow@test.com">
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="password" class="col-sm-4 col-form-label">Mot de passe</label>
+            <div class="col-sm-8">
+            <input type="text" readonly class="form-control-plaintext" id="password" value="********">
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="address" class="col-sm-4 col-form-label">Adresse</label>
+            <div class="col-sm-8">
+            <textarea class="form-control-plaintext" readonly id="address">12 rue du Flouf</textarea>
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="phone" class="col-sm-4 col-form-label">Téléphone</label>
+            <div class="col-sm-8">
+            <input type="text" class="form-control-plaintext" readonly id="phone" value="0622334455">
+            </div>
+        </div>
+        <div class="d-grid col-4 ms-auto me-auto mt-4">
+            <a href="/users/edit?id={{user.id}}" class="btn btn-outline-dark" type="submit">Editer mon profile</a><br>
+        </div>
+    </div>
+</div>
+{% endblock %}
